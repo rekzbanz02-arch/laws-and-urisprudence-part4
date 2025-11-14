@@ -62,7 +62,24 @@
   <div id="accessSection">
     <p id="fileDisplay"></p> <!-- NEW filename display -->
     <h2>Enter Access Code</h2>
-    <input type="password" id="codeInput" placeholder="Enter code here" />
+    <div style="position:relative; display:inline-block;">
+      <input type="password" id="codeInput" placeholder="Enter code here"
+        style="padding-right:45px;">
+    
+      <span id="toggleEye"
+        style="
+          position:absolute;
+          right:12px;
+          top:50%;
+          transform:translateY(-50%);
+          cursor:pointer;
+          font-size:20px;
+          color:#9fe3ff;
+          user-select:none;
+        "
+      >👁️</span>
+    </div>
+    
     <br>
     <button type="button" id="accessSubmit" style="padding:10px 40px; font-size:20px;">Login</button>
 
@@ -158,6 +175,20 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    // ===== SHOW / HIDE PASSWORD TOGGLE =====
+    const toggleEye = document.getElementById("toggleEye");
+  const codeInputEye = document.getElementById("codeInput");
+
+  toggleEye.addEventListener("click", () => {
+    if (codeInputEye.type === "password") {
+      codeInputEye.type = "text";
+      toggleEye.textContent = "🙈"; // hide icon
+    } else {
+      codeInputEye.type = "password";
+      toggleEye.textContent = "👁️"; // show icon
+    }
+  });
+
   // ===== Display filename on login page =====
   const quizTitleEl = document.querySelector("#quizSection h1");
   const displayFileName = quizTitleEl ? quizTitleEl.textContent.replace("Quiz: ", "").trim() : "index.html";
@@ -510,45 +541,45 @@ if (contactSubmit) {
   const pool = [
   
   
-    {q: "Which of the following is NOT a step in the chain of custody process?", choices: ["A) Collecting the sample", "B) Sealing the evidence", "C) Destroying the evidence", "D) Storing the evidence", "E) Documenting the evidence"], correctIndex: 2},
+  {q: "Which of the following is NOT a step in the chain of custody process?", choices: ["A) Collecting the sample", "B) Sealing the evidence", "C) Destroying the evidence", "D) Storing the evidence", "E) Documenting the evidence"], correctIndex: 2},
 
-  {q: "Cumulative evidence is:", choices: ["A) Evidence of a different kind proving the same fact", "B) Evidence of the same kind proving the same fact", "C) Inadmissible evidence", "D) Evidence that contradicts testimonial evidence", "E) A judicial admission"], correctIndex: 1},
+{q: "Cumulative evidence is:", choices: ["A) Evidence of a different kind proving the same fact", "B) Evidence of the same kind proving the same fact", "C) Inadmissible evidence", "D) Evidence that contradicts testimonial evidence", "E) A judicial admission"], correctIndex: 1},
 
-  {q: "What essential details must be included in an analytical toxicology request?", choices: ["A) Suspected substance and dosage", "B) A confession from the suspect", "C) The scheduled trial date", "D) The list of witnesses", "E) None of the above"], correctIndex: 0},
+{q: "What essential details must be included in an analytical toxicology request?", choices: ["A) Suspected substance and dosage", "B) A confession from the suspect", "C) The scheduled trial date", "D) The list of witnesses", "E) None of the above"], correctIndex: 0},
 
-  {q: "Under Philippine law, which article of the Revised Penal Code deals with the crime of delay in the delivery of a detained person to the proper judicial authorities?", choices: ["A) Article 124", "B) Article 125", "C) Article 126", "D) Article 127", "E) None of the above"], correctIndex: 1},
+{q: "Under Philippine law, which article of the Revised Penal Code deals with the crime of delay in the delivery of a detained person to the proper judicial authorities?", choices: ["A) Article 124", "B) Article 125", "C) Article 126", "D) Article 127", "E) None of the above"], correctIndex: 1},
 
-  {q: "Who is/are liable in the crime of plunder?", choices: ["A) Principal only", "B) Principal, accomplice and accessory", "C) Principal and accomplice", "D) Natural Persons only", "E) Juridical person"], correctIndex: 1},
+{q: "Who is/are liable in the crime of plunder?", choices: ["A) Principal only", "B) Principal, accomplice and accessory", "C) Principal and accomplice", "D) Natural Persons only", "E) Juridical person"], correctIndex: 1},
 
-  {q: "Which of the following is not an element that constitutes the crime of rape under Philippine law?", choices: ["A) Use of force or intimidation", "B) The victim is a minor under the age of 12", "C) The victim is married to the offender", "D) The act is committed with the victim’s consent", "E) None of the above"], correctIndex: 3},
+{q: "Which of the following is not an element that constitutes the crime of rape under Philippine law?", choices: ["A) Use of force or intimidation", "B) The victim is a minor under the age of 12", "C) The victim is married to the offender", "D) The act is committed with the victim’s consent", "E) None of the above"], correctIndex: 3},
 
-  {q: "Which of the following describes an attempted rape under Philippine law?", choices: ["A) The perpetrator succeeds in penetrating the victim.", "B) The perpetrator tries to force sexual intercourse but is stopped before penetration.", "C) The perpetrator threatens the victim but does not attempt any physical contact.", "D) The perpetrator verbally harasses the victim without physical contact.", "E) None of the above"], correctIndex: 1},
+{q: "Which of the following describes an attempted rape under Philippine law?", choices: ["A) The perpetrator succeeds in penetrating the victim.", "B) The perpetrator tries to force sexual intercourse but is stopped before penetration.", "C) The perpetrator threatens the victim but does not attempt any physical contact.", "D) The perpetrator verbally harasses the victim without physical contact.", "E) None of the above"], correctIndex: 1},
 
-  {q: "CCC was accused of the crime of Frustrated Murder. He used an unlicensed firearm in the killing of DDD. However, due to immediate medical intervention, DDD survived. What are the legal consequences of CCC’s use of an unlicensed firearm in the crime of Frustrated Murder?", choices: ["A) The use unlicensed firearm shall be absorbed in the crime of Frustrated Murder.", "B) The use unlicensed firearm shall be considered as aggravating circumstance in the crime of Frustrated Murder.", "C) The use unlicensed firearm shall be prosecuted separately.", "D) The use of unlicensed firearm shall make the crime Murder.", "E) None of the above"], correctIndex: 1},
+{q: "CCC was accused of the crime of Frustrated Murder. He used an unlicensed firearm in the killing of DDD. However, due to immediate medical intervention, DDD survived. What are the legal consequences of CCC’s use of an unlicensed firearm in the crime of Frustrated Murder?", choices: ["A) The use unlicensed firearm shall be absorbed in the crime of Frustrated Murder.", "B) The use unlicensed firearm shall be considered as aggravating circumstance in the crime of Frustrated Murder.", "C) The use unlicensed firearm shall be prosecuted separately.", "D) The use of unlicensed firearm shall make the crime Murder.", "E) None of the above"], correctIndex: 1},
 
-  {q: "Under Article 125 of the Revised Penal Code, what is the maximum time that a person can be detained without being delivered to the proper judicial authorities, depending on the offense they are charged with?", choices: ["A) 12 hours", "B) 18 hours", "C) 36 hours", "D) 24 hours for all offenses", "E) None of the above"], correctIndex: 2},
+{q: "Under Article 125 of the Revised Penal Code, what is the maximum time that a person can be detained without being delivered to the proper judicial authorities, depending on the offense they are charged with?", choices: ["A) 12 hours", "B) 18 hours", "C) 36 hours", "D) 24 hours for all offenses", "E) None of the above"], correctIndex: 2},
 
-  {q: "Electronic documents are admissible if:", choices: ["A) They are printed out", "B) They comply with rules on admissibility and authentication", "C) They are certified by an IT expert", "D) They are filed in government offices", "E) They are signed by police officers"], correctIndex: 1},
+{q: "Electronic documents are admissible if:", choices: ["A) They are printed out", "B) They comply with rules on admissibility and authentication", "C) They are certified by an IT expert", "D) They are filed in government offices", "E) They are signed by police officers"], correctIndex: 1},
 
-  {q: "Sandra issued a check worth Php150,000.00 to Carla, but it bounced for insufficient funds when presented at the bank. Carla went to the police station for advice. If you were the police officer, what is the best legal advice to give her?", choices: ["A) File a criminal case against Sandra under BP 22.", "B) Consult a lawyer to prepare a demand letter.", "C) Send a Notice of Dishonor to Sandra.", "D) Simply text Sandra about the bouncing check.", "E) Report the matter to the barangay captain."], correctIndex: 2},
+{q: "Sandra issued a check worth Php150,000.00 to Carla, but it bounced for insufficient funds when presented at the bank. Carla went to the police station for advice. If you were the police officer, what is the best legal advice to give her?", choices: ["A) File a criminal case against Sandra under BP 22.", "B) Consult a lawyer to prepare a demand letter.", "C) Send a Notice of Dishonor to Sandra.", "D) Simply text Sandra about the bouncing check.", "E) Report the matter to the barangay captain."], correctIndex: 2},
 
-  {q: "Which of the following is the penalty if a public official is caught in violation of RA No. 9175 or Chain Saw Act?", choices: ["A) Imprisonment of not less than one (1 ) month nor more than six (6) months and a fine of not less than One thousand pesos (P1,000.00) nor more than Four thousand pesos (P4,000.00) if he/she caught of engine serial number.", "B) Imprisonment of six (6) years and one (1) day to eight (8) years or a fine of not less than Thirty thousand pesos (P30,000.00) but not more than Fifty thousand pesos if he/she caught unlawfully using an unregistered chain saw.", "C) Imprisonment of not less than one (1) month nor more than six (6) months and a fine of not less than One thousand pesos (P1,000.00) for more than Four thousand pesos (P4,000.00) if he/she caught unlawfully import chain saw.", "D) Removed from office and perpetually disqualified from holding any public office.", "E) All"], correctIndex: 4},
+{q: "Which of the following is the penalty if a public official is caught in violation of RA No. 9175 or Chain Saw Act?", choices: ["A) Imprisonment of not less than one (1 ) month nor more than six (6) months and a fine of not less than One thousand pesos (P1,000.00) nor more than Four thousand pesos (P4,000.00) if he/she caught of engine serial number.", "B) Imprisonment of six (6) years and one (1) day to eight (8) years or a fine of not less than Thirty thousand pesos (P30,000.00) but not more than Fifty thousand pesos if he/she caught unlawfully using an unregistered chain saw.", "C) Imprisonment of not less than one (1) month nor more than six (6) months and a fine of not less than One thousand pesos (P1,000.00) for more than Four thousand pesos (P4,000.00) if he/she caught unlawfully import chain saw.", "D) Removed from office and perpetually disqualified from holding any public office.", "E) All"], correctIndex: 4},
 
-  {q: "Which is NOT part of the chain of custody process?", choices: ["A) Sample collection", "B) Evidence sealing", "C) Evidence destruction", "D) Evidence storage", "E) Evidence documentation"], correctIndex: 2},
+{q: "Which is NOT part of the chain of custody process?", choices: ["A) Sample collection", "B) Evidence sealing", "C) Evidence destruction", "D) Evidence storage", "E) Evidence documentation"], correctIndex: 2},
 
-  {q: "What is the main purpose of maintaining the chain of custody in handling evidence?", choices: ["A) To speed up laboratory testing", "B) To ensure the integrity of evidence from collection to court", "C) To quickly transfer materials to the prosecutor", "D) To secure storage at the police station only", "E) To produce faster laboratory results"], correctIndex: 1},
+{q: "What is the main purpose of maintaining the chain of custody in handling evidence?", choices: ["A) To speed up laboratory testing", "B) To ensure the integrity of evidence from collection to court", "C) To quickly transfer materials to the prosecutor", "D) To secure storage at the police station only", "E) To produce faster laboratory results"], correctIndex: 1},
 
-  {q: "What is the legal term for the act of intentionally killing another person without qualifying circumstances?", choices: ["A) Murder", "B) Homicide", "C) Parricide", "D) Infanticide", "E) None of the above"], correctIndex: 1},
+{q: "What is the legal term for the act of intentionally killing another person without qualifying circumstances?", choices: ["A) Murder", "B) Homicide", "C) Parricide", "D) Infanticide", "E) None of the above"], correctIndex: 1},
 
-  {q: "Which of the following is the primary duty of a peace officer making an arrest?", choices: ["A. To decide on the guilt of the accused", "B. To investigate the crime scene immediately", "C. To deliver the arrested person to the nearest police station or jail without unnecessary delay", "D. To prepare the information and file it directly in court", "E. To secure a certification from the prosecutor"], correctIndex: 2},
+{q: "Which of the following is the primary duty of a peace officer making an arrest?", choices: ["A. To decide on the guilt of the accused", "B. To investigate the crime scene immediately", "C. To deliver the arrested person to the nearest police station or jail without unnecessary delay", "D. To prepare the information and file it directly in court", "E. To secure a certification from the prosecutor"], correctIndex: 2},
 
-  {q: "What is the definition of arrest under Rule 113?", choices: ["A. Seizing property to satisfy judgment", "B. Summoning an accused for trial", "C. Taking a person into custody to answer for an offense", "D. Issuing a warrant against a person", "E. Restricting movement temporarily for questioning"], correctIndex: 2},
+{q: "What is the definition of arrest under Rule 113?", choices: ["A. Seizing property to satisfy judgment", "B. Summoning an accused for trial", "C. Taking a person into custody to answer for an offense", "D. Issuing a warrant against a person", "E. Restricting movement temporarily for questioning"], correctIndex: 2},
 
-  {q: "What level of proof is required to secure a conviction in criminal cases?", choices: ["A) Preponderance of evidence", "B) Clear and convincing proof", "C) Proof beyond reasonable doubt", "D) Establishing probable cause", "E) Substantial evidence"], correctIndex: 2},
+{q: "What level of proof is required to secure a conviction in criminal cases?", choices: ["A) Preponderance of evidence", "B) Clear and convincing proof", "C) Proof beyond reasonable doubt", "D) Establishing probable cause", "E) Substantial evidence"], correctIndex: 2},
 
-  {q: "Who may file a complaint for adultery or concubinage?", choices: ["A. Any peace officer", "B. The offended spouse only", "C. The children of the offended spouse", "D. The prosecutor", "E. Any relative of the offended spouse"], correctIndex: 1},
+{q: "Who may file a complaint for adultery or concubinage?", choices: ["A. Any peace officer", "B. The offended spouse only", "C. The children of the offended spouse", "D. The prosecutor", "E. Any relative of the offended spouse"], correctIndex: 1},
 
-  {q: "Which is an example of object evidence?", choices: ["A. Affidavit of a witness", "B. CCTV footage showing the incident", "C. Medical certificate of injuries", "D. The firearm used in the crime", "E. Police blotter"], correctIndex: 3}
+{q: "Which is an example of object evidence?", choices: ["A. Affidavit of a witness", "B. CCTV footage showing the incident", "C. Medical certificate of injuries", "D. The firearm used in the crime", "E. Police blotter"], correctIndex: 3}
 
 
   ];
@@ -656,6 +687,3 @@ if (contactSubmit) {
 </script>
 </body>
 </html>
-
-
-
